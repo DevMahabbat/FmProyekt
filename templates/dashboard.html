@@ -1,0 +1,40 @@
+{% extends 'layout.html' %}
+
+
+{% block main %}
+
+<p> Xos geldiniz , {{request.user.username}}</p>
+<hr>
+<a class='btn btn-danger' href="addarticle"> Add Article </a>
+
+<hr>
+{% if articles %}
+
+<table class="table">
+  <thead class="thead-dark">
+    <tr>
+      <th scope="col">Id</th>
+      <th scope="col">Title</th>
+      <th scope="col">Author</th>
+      <th scope="col">Explanation</th>
+      <th scope="col">Created Date</th>
+    </tr>
+  </thead>
+  <tbody>
+
+    {% for article in articles %}
+    <tr>
+      <th scope="row">{{article.id}}</th>
+      <td><a href="{{article.id}}">{{article.title}}</a></td> 
+      <td>{{article.author}}</td>
+      <td> <p style="width: 300px; text-overflow: ellipsis; white-space: nowrap;
+overflow: hidden;">{{article.explanation}}</p></td>
+      <td>{{article.createdate}}</td>
+      <td><a href="" class = "btn btn-danger">Yenilə</a></td>
+        <td><a href="" class = "btn btn-danger">Sil</a> </td>
+    </tr>
+    {% endfor %}
+    {% else %}
+    <div class="alert alert-danger"> Artikl yoxdur</div>
+    {% endif %}
+{% endblock main %}
