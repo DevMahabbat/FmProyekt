@@ -3,7 +3,6 @@
 {% block  main %}
 <form  method="post">
 {% csrf_token %}
-{{form.media}}
 {{form|crispy}}
 
 <button class="btn btn-danger">Add article </button>
