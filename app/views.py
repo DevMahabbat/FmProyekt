@@ -4,7 +4,7 @@ from matplotlib.style import context
 # Create your views here.
 from .forms import  Articleform
 from .models import Article
-
+from .forms import CodeForm
 
 def index(request):
     return  render(request,"index.html")
@@ -43,3 +43,30 @@ def addArticle(request):
 def detail(request,id):
     article = Article.objects.filter(id=id).first()
     return render(request,"detail.html",{"article":article})
+def detailhell(request,id):
+    article = Article.objects.filter(id=id).first()
+    form = CodeForm(request.POST or None)
+    if form.is_valid():
+
+
+
+        #  get code and write it to the file 
+        print(form)
+        with open('form.txt', 'w') as file:
+            file.writelines(str(form))
+        with open('form.txt','r+',encoding='utf-8') as file1:
+            metn = file1.read()
+            metn2 = str(metn[178:-59])
+        
+        print(metn2)
+        with open('textin2.txt','w',encoding='utf-8') as file2:
+            file2.write(metn2)
+                
+
+
+
+
+    
+    context = {"article":article,
+    "form":form}
+    return render(request,"detailhell.html",context=context) 

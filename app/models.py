@@ -1,6 +1,7 @@
 from tabnanny import verbose
 from django.db import models
 from ckeditor.fields import RichTextField
+from django.forms import Widget
 # Create your models here.
 class Article(models.Model):
     title = models.CharField(max_length=50,verbose_name="Mətn adi")

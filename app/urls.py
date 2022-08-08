@@ -12,4 +12,5 @@ urlpatterns = [
     path('dashboard',views.dashboard),
     path('addarticle',views.addArticle),
     path('article/<int:id>',views.detail,name="detail"),
+    path('articlehell/<int:id>',views.detailhell,name="detailhell"),
 ]
