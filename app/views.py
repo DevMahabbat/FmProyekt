@@ -5,7 +5,8 @@ from django.contrib.auth.decorators import login_required
 from .forms import  Articleform
 from .models import Article
 from .forms import CodeForm
-
+import os
+from pathlib import Path
 def index(request):
     return  render(request,"index.html")
 
@@ -59,11 +60,17 @@ def detailhell(request,id):
         myfile = form.save(commit= False)
         myfile.coder = request.user
         myfile.file = request.FILES.get('file')
-        filename = myfile.file
+        filename = str(myfile.file)
+        myfile.save()
+        BASE_DIR = Path(__file__).resolve().parent.parent
+        filedir = os.path.join(BASE_DIR, 'media',filename)
+        print(filedir)
         print(filename)
         myfile.save()
-        
-        
+        # rufet filedir senin ucun pomoy komputerde yuklenen faylin harda oldugun deyir adi da daxil olmaqla, filename ise hemin faylin adidi
+
+
+
         messages.success(request,message ='code saved successfully')
         return redirect('dashboard')
 
