@@ -35,7 +35,7 @@ def addArticle(request):
         article.author = request.user
         article.save()
         messages.success(request,"Makale başarıyla oluşturuldu")
-        return redirect("index")
+        return redirect('dashboard')
 
         
     return render(request,"addarticle.html",{"form":form})
@@ -60,9 +60,12 @@ def detailhell(request,id):
         myfile.coder = request.user
         myfile.file = request.FILES.get('file')
         filename = myfile.file
+        print(filename)
         myfile.save()
-        messages.success(request,message ='code saved successfully' )
-        redirect(reverse('app:index'))
+        
+        
+        messages.success(request,message ='code saved successfully')
+        return redirect('dashboard')
 
         #  get code and write it to the file 
         print(form)
@@ -74,7 +77,7 @@ def detailhell(request,id):
         print(metn2)
         with open('textin2.txt','w',encoding='utf-8') as file2:
             file2.write(metn2)
-
+        
 
     context = {"article":article,
     "form":form}
