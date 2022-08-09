@@ -5,6 +5,7 @@ from django import views
 
 from django.urls import path
 
+
 from . import views
 urlpatterns = [
     path('', views.index,name="index"),
@@ -14,3 +15,4 @@ urlpatterns = [
     path('article/<int:id>',views.detail,name="detail"),
     path('articlehell/<int:id>',views.detailhell,name="detailhell"),
 ]
+
