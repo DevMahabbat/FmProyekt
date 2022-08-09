@@ -1,0 +1,21 @@
+<tr>
+    <th><label for="id_code">Code:</label></th>
+    <td>
+      
+      <input type="text" name="code" value="wdwefdwwdsacsefefrgervevr" maxlength="3000" required id="id_code">
+      
+      
+    </td>
+  </tr>
+
+  <tr>
+    <th><label for="id_file">Fayl elave edin:</label></th>
+    <td>
+      
+      <input type="file" name="file" id="id_file">
+      
+      
+        
+      
+    </td>
+  </tr>

@@ -18,7 +18,7 @@ def about(request,id):
 
 
 
-
+@login_required
 def dashboard(request):
     articles = Article.objects.filter(author=request.user)
     context={'articles': articles}
@@ -40,9 +40,15 @@ def addArticle(request):
         
     return render(request,"addarticle.html",{"form":form})
 
+
+
+@login_required
 def detail(request,id):
     article = Article.objects.filter(id=id).first()
     return render(request,"detail.html",{"article":article})
+
+
+
 @login_required 
 def detailhell(request,id):
     article = Article.objects.filter(id=id).first()
@@ -52,10 +58,11 @@ def detailhell(request,id):
     if form.is_valid():
         myfile = form.save(commit= False)
         myfile.coder = request.user
+        myfile.file = request.FILES.get('file')
+        filename = myfile.file
         myfile.save()
-
-        
-
+        messages.success(request,message ='code saved successfully' )
+        redirect(reverse('app:index'))
 
         #  get code and write it to the file 
         print(form)

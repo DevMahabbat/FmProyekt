@@ -5,7 +5,7 @@ from django import views
 
 from django.urls import path
 
-
+app_name = 'app'
 from . import views
 urlpatterns = [
     path('', views.index,name="index"),
