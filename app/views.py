@@ -70,7 +70,7 @@ def detailhell(request,id):
         # rufet filedir senin ucun pomoy komputerde yuklenen faylin harda oldugun deyir adi da daxil olmaqla, filename ise hemin faylin adidi
 
 
-
+# kodu bundan yuxardaki qeydimle bunu arasina yaz
         messages.success(request,message ='code saved successfully')
         return redirect('dashboard')
 
